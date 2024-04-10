@@ -26,31 +26,31 @@ El proyecto esta dividido en tres repositorios. Un repositorio central, reposito
 git clone https://github.com/Francisco734/convert-currency.git
 ```
 
-2. Dirigirse a la carpeta "convert-currency/backend"
+2. Dirigirse a la carpeta "convert-currency/backend".
 
 ```bash
 cd convert-currency/backend
 ```
 
-3. Clonar el repositorio backend
+3. Clonar el repositorio backend.
 
 ```bash
 git clone https://github.com/Francisco734/convert-currency-api.git
 ```
 
-4. Dirigirse a la carpeta "convert-currency/frontend"
+4. Dirigirse a la carpeta "convert-currency/frontend".
 
 ```bash
 cd ../frontend
 ```
 
-5. Clonar repositorio frontend
+5. Clonar repositorio frontend.
 
 ```bash
 git clone https://github.com/Francisco734/convert-currency-app.git
 ```
 
-6. Dirigirse a la carpeta "convert-currency"
+6. Dirigirse a la carpeta "convert-currency".
 
 ```bash
 cd ..
@@ -73,14 +73,29 @@ convert-currency
 │   ├── initdb.sql
 ├── .gitignore
 ├── docker-compose.yml
-└── README.md
+├── README.md
+└── start.sh
 ```
 
-7. Ejecutar contenedores
+7. Ejecutar contenedores.
 
 ```bash
 docker-compose up -d --build
 ```
+
+Una vez levantados los contenedores, abrir el archivo _**frontend/convert-currency-app/src/environments/environment.ts**_, cambiar el valor de la ip en la propiedad _**back_url**_ por la ip de la maquina local y guardar los cambios.
+
+8. Dar permisos de ejecución al archivo _**start.sh**_
+```bash
+sudo chmod 775 start.sh
+```
+
+9. Ejecutar el archivo _**start.sh**_ para inicializar el backend
+```bash
+./start.sh
+```
+
+10. Abrir en el navegador web la dirección: http://ip-maquina-local:14203/
 
 ---
  *Elaboró: Francisco Sánchez Estrada*
