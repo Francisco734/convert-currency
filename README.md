@@ -83,19 +83,26 @@ convert-currency
 docker-compose up -d --build
 ```
 
-Una vez levantados los contenedores, abrir el archivo _**frontend/convert-currency-app/src/environments/environment.ts**_, cambiar el valor de la ip en la propiedad _**back_url**_ por la ip de la maquina local y guardar los cambios.
+8. Una vez levantados los contenedores, abrir el archivo _**frontend/convert-currency-app/src/environments/environment.ts**_, cambiar el valor de la ip en la propiedad _**back_url**_ por la ip de la maquina local y guardar los cambios.
+```javascript
+export const environment = {
+  ...
+  back_url: 'http://ip-maquina-local:8008/api'
+};
+```
 
-8. Dar permisos de ejecución al archivo _**start.sh**_
+
+9. Dar permisos de ejecución al archivo _**start.sh**_
 ```bash
 sudo chmod 775 start.sh
 ```
 
-9. Ejecutar el archivo _**start.sh**_ para inicializar el backend
+10. Ejecutar el archivo _**start.sh**_ para inicializar el backend
 ```bash
 ./start.sh
 ```
 
-10. Abrir en el navegador web la dirección: http://ip-maquina-local:14203/
+11. Abrir en el navegador web la dirección: http://ip-maquina-local:14203/
 
 ---
  *Elaboró: Francisco Sánchez Estrada*
