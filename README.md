@@ -23,7 +23,7 @@ El proyecto esta dividido en tres repositorios. Un repositorio central, reposito
 1. Clonar el repositorio central.
 
 ```bash
-git clone "repositorio_central"
+git clone https://github.com/Francisco734/convert-currency.git
 ```
 
 2. Dirigirse a la carpeta "convert-currency/backend"
@@ -35,7 +35,7 @@ cd convert-currency/backend
 3. Clonar el repositorio backend
 
 ```bash
-git clone "repositorio_backend"
+git clone https://github.com/Francisco734/convert-currency-api.git
 ```
 
 4. Dirigirse a la carpeta "convert-currency/frontend"
@@ -47,7 +47,7 @@ cd ../frontend
 5. Clonar repositorio frontend
 
 ```bash
-git clone "repositorio_frontend"
+git clone https://github.com/Francisco734/convert-currency-app.git
 ```
 
 6. Dirigirse a la carpeta "convert-currency"
