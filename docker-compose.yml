@@ -1,0 +1,79 @@
+version: '3.5'
+services:
+#? Aplication
+  # Backend
+  convert-currency-api:
+    build:
+      args:
+        user: admin
+        uid: 1000
+      context: .
+      dockerfile: ./backend/Dockerfile
+    container_name: convert-currency-api
+    restart: always
+    image: convert-currency-api
+    working_dir: /var/www/
+    volumes:
+      - ./backend/convert-currency-api:/var/www
+    networks:
+      - convert-currency-network
+
+  convert-currency-server:
+    build:
+      context: .
+      dockerfile: ./frankenphp/Dockerfile
+    container_name: convert-currency-server
+    restart: always
+    ports:
+      - "8008:80"
+    volumes:
+      - ./backend/convert-currency-api:/app
+      - ./frankenphp/caddy_data:/data
+      - ./frankenphp/caddy_config:/config
+    networks:
+      - convert-currency-network
+
+  # Frontend
+  convert-currency-app:
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile
+    container_name: convert-currency-app
+    restart: always
+    ports:
+      - 14203:4200
+    volumes:
+      - ./frontend/convert-currency-app:/project
+      - /project/node_modules
+
+#? Services
+  #MySQL
+  convert-currency-mysql:
+    platform: linux/x86_64
+    build:
+      context: .
+      dockerfile: ./mysql/Dockerfile
+    container_name: convert-currency-mysql
+    restart: always
+    ports:
+    - 13310:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_USER: "adm_convert_currency"
+      MYSQL_PASSWORD: "password_db_convert_currency"
+      MYSQL_DATABASE: "convert_currency"
+    volumes:
+      - ./mysql/schemas:/var/lib/mysql:rw
+    networks:
+      convert-currency-network:
+        aliases:
+          - mysql_host
+
+volumes:
+  schemas: {}
+  caddy_data:
+  caddy_config:
+networks:
+  convert-currency-network:
+    driver: bridge
+    name: convert-currency-network

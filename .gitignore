@@ -1,0 +1,6 @@
+.DS_Store
+/backend/convert-currency-api
+/frankenphp/caddy_*
+/frontend/convert-currency-app
+/mysql/schemas
+dev.sh
